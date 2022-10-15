@@ -15,7 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setScene(new Scene(
-                FXMLLoader.load(Objects.requireNonNull(getClass().getResource("rails_fence_scene.fxml")))));
+                FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main_scene.fxml")))));
         primaryStage.show();
 
     }
