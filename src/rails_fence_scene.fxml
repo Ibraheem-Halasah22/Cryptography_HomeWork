@@ -13,8 +13,8 @@
       <Button layoutX="22.0" layoutY="402.0" mnemonicParsing="false" onAction="#encrypt" prefHeight="26.0" prefWidth="222.0" text="ENCRYPT" />
       <TextArea fx:id="encPlainTextArea" layoutX="33.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
       <TextArea fx:id="encCipherTextArea" layoutX="251.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
-      <TextArea fx:id="decPlainTextArea" layoutX="705.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0" />
-      <TextArea fx:id="decCipherTextArea" layoutX="486.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="decPlainTextArea" layoutX="705.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
+      <TextArea fx:id="decCipherTextArea" layoutX="486.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
       <Line endX="25.60003662109375" endY="-294.20001220703125" layoutX="441.0" layoutY="428.0" startX="25.60003662109375" startY="107.4000244140625" />
       <Button layoutX="401.0" layoutY="377.0" mnemonicParsing="false" onAction="#copyCipher" prefHeight="26.0" prefWidth="147.0" text="Copy Cipher&gt;&gt;" />
       <Button layoutX="524.0" layoutY="471.0" mnemonicParsing="false" onAction="#decrypt" prefHeight="26.0" prefWidth="147.0" text="Decrypt" />

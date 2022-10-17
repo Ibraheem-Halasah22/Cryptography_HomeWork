@@ -29,7 +29,26 @@ public class RailsFenceSceneController {
 
     @FXML
     void bruteForce() {
+        String areaText = "";
+        String cipher = decCipherTextArea.getText().trim();
+        if(cipher.isEmpty()){
+            alert.setContentText("The cipher text area is empty!");
+            alert.show();
+            return;
+        }
+        for(char c : cipher.toCharArray()){
+            if (!Character.isUpperCase(c) && c != 'x') {
+                alert.setContentText("Your cipher text can only contain upper case Alphabetic from A to Z!");
+                alert.show();
+                return;
+            }
+        }
 
+        for(int i = 1; i <= 10; i++){
+            areaText += ("key is " + i + ": " + decRails(cipher, i) +"\n"
+            +"------------------------------------------------\n");
+        }
+        decPlainTextArea.setText(areaText.replaceAll("x", " "));
     }
 
     @FXML
@@ -125,7 +144,7 @@ public class RailsFenceSceneController {
             return;
         }
         String plainText = decRails(cipher, key);
-        System.out.println("plain is " + plainText);
+
         if(plainText == null) return;
         decPlainTextArea.setText(plainText.replaceAll("x", " "));
 
