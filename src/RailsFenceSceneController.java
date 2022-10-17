@@ -1,10 +1,16 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class RailsFenceSceneController {
 
@@ -204,4 +210,13 @@ public class RailsFenceSceneController {
 
         return plainText;
     }
+
+    @FXML
+    void goBack(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+        stage.setScene(new Scene(
+                FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main_scene.fxml")))));
+        stage.show();
+    }
+
 }
