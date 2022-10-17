@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22737cd0-d029-44e3-abd8-2c567ab21c68" name="Changes" comment="main scene added">
-      <change afterPath="$PROJECT_DIR$/src/LeastSimpleScene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/least_simple_scene.fxml" afterDir="false" />
+    <list default="true" id="22737cd0-d029-44e3-abd8-2c567ab21c68" name="Changes" comment="Rails Fence encryption implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RailsFenceSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RailsFenceSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main_scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main_scene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rails_fence_scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/rails_fence_scene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +74,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665595481418</updated>
-      <workItem from="1665595483219" duration="8021000" />
+      <workItem from="1665595483219" duration="13760000" />
     </task>
     <task id="LOCAL-00001" summary="First alert test passed">
       <created>1665596750664</created>
@@ -94,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665853982809</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Rails Fence encryption implemented">
+      <created>1665988640428</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1665988640428</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +117,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First alert test passed" />
     <MESSAGE value="main scene added" />
-    <option name="LAST_COMMIT_MESSAGE" value="main scene added" />
+    <MESSAGE value="Rails Fence encryption implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rails Fence encryption implemented" />
   </component>
 </project>

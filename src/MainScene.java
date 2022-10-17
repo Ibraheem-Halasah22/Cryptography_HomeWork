@@ -11,15 +11,19 @@ import java.util.Objects;
 public class MainScene {
     @FXML
     void goToRailsFence(ActionEvent event) throws IOException {
-        ((Stage) ((Node) (event.getSource())).getScene().getWindow()).setScene(new Scene(
+        Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+                stage.setScene(new Scene(
                 FXMLLoader.load(Objects.requireNonNull(getClass().getResource("rails_fence_scene.fxml")))
         ));
+        stage.show();
     }
 
     @FXML
     void goToLeastSimple(ActionEvent event) throws IOException {
-        ((Stage) ((Node) (event.getSource())).getScene().getWindow()).setScene(new Scene(
+        Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+        stage.setScene(new Scene(
                 FXMLLoader.load(Objects.requireNonNull(getClass().getResource("least_simple_scene.fxml")))
         ));
+        stage.show();
     }
 }

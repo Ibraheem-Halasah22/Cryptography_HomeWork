@@ -5,11 +5,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class RailsFenceSceneController {
 
-
+    private Alert alert = new Alert(Alert.AlertType.ERROR);
     @FXML
     private TextArea decCipherTextArea;
 
@@ -29,15 +28,15 @@ public class RailsFenceSceneController {
     private TextArea encPlainTextArea;
 
     @FXML
-    void bruteForce(ActionEvent event) {
+    void bruteForce() {
 
     }
 
     @FXML
-    void encrypt(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        String plainText = encPlainTextArea.getText().trim();
-        int key = 0;
+    void encrypt() {
+
+        String plainText = encPlainTextArea.getText().replaceAll(" ", "x");
+        int key;
         try {
             key = Integer.parseInt(encKey.getText().trim());
             if (key < 1 || key > 10) {
@@ -62,29 +61,28 @@ public class RailsFenceSceneController {
         int markerAddress = 0;
         boolean reverseFlag = false;
         for (char c : plainText.toCharArray()) {
-            if (Character.isSpace(c)) {
-                rails[markerAddress].add('x');
-            } else if (!Character.isUpperCase(c)) {
+            if (!Character.isUpperCase(c) && c != 'x') {
                 alert.setContentText("Your plain text can only contain upper case Alphabetic from A to Z!");
                 alert.show();
                 return;
             } else {
                 rails[markerAddress].add(c);
             }
-            if (reverseFlag) {
-                markerAddress--;
-                if (markerAddress < 0) {
-                    markerAddress = 1;
-                    reverseFlag = false;
-                }
-            } else {
-                markerAddress++;
-                if (markerAddress == key) {
-                    markerAddress -= 2;
-                    reverseFlag = true;
+            if (key != 1) {
+                if (reverseFlag) {
+                    markerAddress--;
+                    if (markerAddress < 0) {
+                        markerAddress = 1;
+                        reverseFlag = false;
+                    }
+                } else {
+                    markerAddress++;
+                    if (markerAddress == key) {
+                        markerAddress -= 2;
+                        reverseFlag = true;
+                    }
                 }
             }
-
         }
         String cipher = "";
         for (ArrayList<Character> a : rails) {
@@ -92,7 +90,6 @@ public class RailsFenceSceneController {
                 cipher += character;
 
             }
-            System.out.println(cipher);
         }
         encCipherTextArea.setText(cipher);
 
@@ -103,8 +100,89 @@ public class RailsFenceSceneController {
         decCipherTextArea.setText(encCipherTextArea.getText());
     }
 
-    @FXML
-    void decrypt(ActionEvent event) {
 
+    @FXML
+    void decrypt() {
+        String cipher = decCipherTextArea.getText().trim();
+        for(char c : cipher.toCharArray()){
+            if (!Character.isUpperCase(c) && c != 'x') {
+                alert.setContentText("Your cipher text can only contain upper case Alphabetic from A to Z!");
+                alert.show();
+                return;
+            }
+        }
+        int key;
+        try {
+            key = Integer.parseInt(decKey.getText().trim());
+            if (key < 1 || key > 10) {
+                alert.setContentText("Key must be from 1 to 10!");
+                alert.show();
+                return;
+            }
+        } catch (Exception e) {
+            alert.setContentText("Please enter valid numeric key!");
+            alert.show();
+            return;
+        }
+        String plainText = decRails(cipher, key);
+        System.out.println("plain is " + plainText);
+        if(plainText == null) return;
+        decPlainTextArea.setText(plainText.replaceAll("x", " "));
+
+
+    }
+    private String decRails(String cipher, int key){
+        String plainText = "";
+        if(cipher.length() == 0){
+            alert.setContentText("The cipher text area is empty!");
+            alert.show();
+            return null;
+        }
+        if(key == 1) return cipher;
+        char [] plainTextArray = cipher.toCharArray();
+        char [][] rails = new char[key][cipher.length()];
+        int markerAddress = 0;
+        for(int i = 0; i < cipher.length(); i += 2 * (key - 1), markerAddress++){
+            rails [0][i] = plainTextArray[markerAddress];
+        }
+        for(int i = 1; i < key - 1; i++){
+            int oldMarker = markerAddress;
+            for(int j = i; j < cipher.length(); j += (2 * (key - 1)), markerAddress += 2){
+                rails [i][j] = plainTextArray[markerAddress];
+
+            }
+            int notSoOldMarker = markerAddress;
+            markerAddress = oldMarker + 1;
+
+            for(int j = 2 * (key - 1) - i; j < cipher.length(); j += 2 * (key - 1), markerAddress += 2){
+                rails [i][j] = plainTextArray[markerAddress];
+            }
+            markerAddress = Math.max(notSoOldMarker, markerAddress) - 1;
+        }
+
+        for(int i = key - 1; i < cipher.length(); i += 2 * (key - 1), markerAddress++){
+            rails [key - 1][i] = plainTextArray[markerAddress];
+        }
+        int railAddress = 0;
+        boolean reverseDirection = false;
+        for(int i = 0; i < cipher.length(); i++){
+            plainText += rails[railAddress][i];
+            if(reverseDirection){
+                railAddress--;
+                if(railAddress < 0) {
+                    railAddress = 1;
+                    reverseDirection = false;
+                }
+            }else {
+                railAddress ++;
+                if(railAddress == key){
+                    reverseDirection = true;
+                    railAddress = key-2;
+                }
+            }
+        }
+
+
+        return plainText;
     }
 }
