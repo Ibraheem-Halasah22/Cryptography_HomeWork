@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 
 
-<AnchorPane prefHeight="442.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RailsFenceSceneController">
+<AnchorPane prefHeight="571.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RailsFenceSceneController">
    <children>
-      <Button layoutX="89.0" layoutY="319.0" mnemonicParsing="false" onAction="#encrypt" prefHeight="26.0" prefWidth="222.0" text="ENCRYPT" />
-      <TextArea fx:id="plainTextArea" layoutX="100.0" layoutY="39.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="22.0" layoutY="402.0" mnemonicParsing="false" onAction="#encrypt" prefHeight="26.0" prefWidth="222.0" text="ENCRYPT" />
+      <TextArea fx:id="encPlainTextArea" layoutX="33.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
+      <TextArea fx:id="encCipherTextArea" layoutX="251.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
+      <TextArea fx:id="decPlainTextArea" layoutX="705.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="decCipherTextArea" layoutX="486.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0" />
+      <Line endX="25.60003662109375" endY="-294.20001220703125" layoutX="441.0" layoutY="428.0" startX="25.60003662109375" startY="107.4000244140625" />
+      <Button layoutX="401.0" layoutY="377.0" mnemonicParsing="false" onAction="#copyCipher" prefHeight="26.0" prefWidth="147.0" text="Copy Cipher&gt;&gt;" />
+      <Button layoutX="524.0" layoutY="471.0" mnemonicParsing="false" onAction="#decrypt" prefHeight="26.0" prefWidth="147.0" text="Decrypt" />
+      <Button layoutX="730.0" layoutY="471.0" mnemonicParsing="false" onAction="#bruteForce" prefHeight="26.0" prefWidth="129.0" text="Brute Force" />
+      <Label layoutX="57.0" layoutY="72.0" prefHeight="42.0" prefWidth="162.0" text="Plain text" />
+      <Label layoutX="724.0" layoutY="81.0" prefHeight="42.0" prefWidth="162.0" text="Plain text" />
+      <Label layoutX="261.0" layoutY="81.0" prefHeight="42.0" prefWidth="162.0" text="Cipher text" />
+      <Label layoutX="496.0" layoutY="81.0" prefHeight="42.0" prefWidth="162.0" text="Cipher text" />
+      <PasswordField fx:id="encKey" layoutX="112.0" layoutY="472.0" promptText="key" />
+      <PasswordField fx:id="decKey" layoutX="638.0" layoutY="402.0" promptText="key" />
    </children>
 </AnchorPane>
